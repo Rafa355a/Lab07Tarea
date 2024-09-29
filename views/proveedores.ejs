@@ -1,0 +1,36 @@
+<h1 class="mb-4">Proveedores</h1>
+
+<form action="/proveedores" method="POST" class="mb-4">
+  <div class="mb-3">
+    <label for="idproveedor" class="form-label">ID Proveedor</label>
+    <input type="number" class="form-control" id="idproveedor" name="idproveedor" required>
+  </div>
+  <div class="mb-3">
+    <label for="nomprecia" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nomprecia" name="nomprecia" maxlength="50" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Agregar Proveedor</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID Proveedor</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% proveedores.forEach(proveedor => { %>
+      <tr>
+        <td><%= proveedor.idproveedor %></td>
+        <td><%= proveedor.nomprecia %></td>
+        <td>
+          <form action="/proveedores/<%= proveedor._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
